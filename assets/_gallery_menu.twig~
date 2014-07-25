@@ -1,0 +1,9 @@
+{% for item in menu %}
+        {% if item.submenu is defined and item.label == 'Galleries' %}
+        		<select id='gallery_path' name='gallery_path'  onchange="location.reload()">
+            {% for item in item.submenu %}
+			     <option value='{{item.label|lower}}' >{{item.label}}</option>
+            {% endfor %}
+            </select>
+        {% endif %}
+{% endfor %}
