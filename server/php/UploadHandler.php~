@@ -99,7 +99,7 @@ class UploadHandler
             // Set to 0 to use the GD library to scale and orient images,
             // set to 1 to use imagick (if installed, falls back to GD),
             // set to 2 to use the ImageMagick convert binary directly:
-            'image_library' => 0,
+            'image_library' => 1,
             // Uncomment the following to define an array of resource limits
             // for imagick:
             /*
@@ -122,7 +122,7 @@ class UploadHandler
                 // The empty image version key defines options for the original image:
                 '' => array(
                     // Automatically rotate images based on EXIF meta data:
-                    'auto_orient' => true
+                    'auto_orient' => false
                 ),
                 // Uncomment the following to create medium sized images:
                 /*

@@ -170,7 +170,8 @@ class Extension extends \Bolt\BaseExtension
             'title' => $title,
             'content' => $content,
             'form_template' => $form_template,
-            'urlbase' => $urlbase
+            'urlbase' => $urlbase,
+
         ));
  
         return $this->injectAssets($html);
@@ -189,8 +190,8 @@ class Extension extends \Bolt\BaseExtension
         $url = $this->app['paths']['files'].'gallerien/';
 
         $assets = "
-<link rel='stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
 
+<link rel='stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
 <link rel='stylesheet' href='{urlbase}extensions/ImageUpload/css/style.css'>
 
 <link rel='stylesheet' href='http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css'>
@@ -198,8 +199,54 @@ class Extension extends \Bolt\BaseExtension
 <link rel='stylesheet' href='{urlbase}extensions/ImageUpload/css/jquery.fileupload.css'>
 <link rel='stylesheet' href='{urlbase}extensions/ImageUpload/css/jquery.fileupload-ui2.css'>
 
+
+<script src='{urlbase}extensions/ImageUpload/js/vendor/navgoco-master/src/jquery.cookie.js'></script>
+
+<script type='text/javascript' src='{urlbase}extensions/ImageUpload/js/vendor/navgoco-master/src/jquery.navgoco.js'></script>
+<link rel='stylesheet' type='text/css' href='{urlbase}extensions/ImageUpload/js/vendor/navgoco-master/src/jquery.navgoco.css' media='screen' />
+
 <noscript><link rel='stylesheet' href='{urlbase}extensions/ImageUpload/css/jquery.fileupload-noscript.css'></noscript>
 <noscript><link rel='stylesheet' href='{urlbase}extensions/ImageUpload/css/jquery.fileupload-ui-noscript.css'></noscript>
+
+<script type='text/javascript' id='demo1-javascript'>
+$(document).ready(function() {
+	// Initialize navgoco with default options
+	$('#gallery_sel').navgoco({
+		caretHtml: '',
+		accordion: false,
+		openClass: 'open',
+		save: true,
+		cookie: {
+			name: 'navgoco',
+			expires: false,
+			path: '/'
+		},
+		slide: {
+			duration: 400,
+			easing: 'swing'
+		},
+		// Add Active class to clicked menu item
+		onClickAfter: function(e, submenu) {
+			e.preventDefault();
+			$('#gallery_sel').find('li').removeClass('active');
+			var li =  $(this).parent();
+			var lis = li.parents('li');
+			li.addClass('active');
+			lis.addClass('active');
+		},
+	});
+
+	$('#collapseAll').click(function(e) {
+		e.preventDefault();
+		$('#gallery_sel').navgoco('toggle', false);
+	});
+
+	$('#expandAll').click(function(e) {
+		e.preventDefault();
+		$('#gallery_sel').navgoco('toggle', true);
+	});
+});
+</script>
 			";
 			
 			$assets_down = "			
@@ -230,18 +277,18 @@ class Extension extends \Bolt\BaseExtension
 <script src='{urlbase}extensions/ImageUpload/js/jquery.fileupload-ui.js'></script>
 
 <script>        
-$(function () {
+$(function (){
     'use strict';
     
-    var g_input = $('#gallery_path');
-    var g_path = '{url}'+g_input.val()+'/';
+    //var g_input = $('#gallery_path');
+    var g_path = '{url}'+'temp/';
+    
 
     // Initialize the jQuery File Upload widget:
     $('#fileupload').fileupload({
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
         url: '{urlbase}extensions/ImageUpload/server/php/',
-		  //formData: [{ name: 'custom_dir', value: ul_dir }],
 		  formData: { gallery_path: g_path },
 	    // Enable image resizing, except for Android and Opera,
 	    // which actually support image resizing, but fail to
@@ -252,6 +299,7 @@ $(function () {
 	    imageMaxHeight: 1200,
 	    imageCrop: false ,// Force cropped images,
 	    imageQuality: 100,
+	    imageOrientation: true,
 
 	 });
 
@@ -279,6 +327,37 @@ $(function () {
             $(this).fileupload('option', 'done')
                 .call(this, $.Event('done'), {result: result});
         });
+        
+        
+$('#selected_gallery li a').click(function() {
+	var g_path = '{url}'+$(this).attr('id')+'/';
+	$('.template-download').remove();
+	$('#fileupload').fileupload({
+		url: '{urlbase}extensions/ImageUpload/server/php/',
+		formData: { gallery_path: g_path },
+	   disableImageResize: /Android(?!.*Chrome)|Opera/
+	       .test(window.navigator && navigator.userAgent),
+	   imageMaxWidth: 1200,
+	   imageMaxHeight: 1200,
+	   imageCrop: false ,// Force cropped images,
+	   imageQuality: 100,
+	   imageOrientation: true,
+
+	});
+	
+	// Load existing files:
+	$('#fileupload').addClass('fileupload-processing');
+   	$.ajax({
+			url: $('#fileupload').fileupload('option', 'url')+'?gallery_path='+g_path,
+        	dataType: 'json',
+        	context: $('#fileupload')[0]
+		}).always(function () {
+      $(this).removeClass('fileupload-processing');
+      	}).done(function (result) {
+         	$(this).fileupload('option', 'done')
+            	.call(this, $.Event('done'), {result: result});
+		});
+	});
 
 });
 </script>
@@ -296,6 +375,7 @@ $(function () {
         preg_match("~^([ \t]*)</body~mi", $html, $matches_down);
         $replacement = sprintf("%s\t%s\n%s", $matches[1], $assets, $matches[0]);
         $replacement_down = sprintf("%s\t%s\n%s", $matches_down[1], $assets_down, $matches_down[0]);
+        //$html = str_replace('<link rel="stylesheet" href="'.$urlbase.'view/css/bootstrap.min.css">', "", $html);
         $html = str_replace('<link rel="stylesheet" href="'.$urlbase.'view/lib/upload/jquery.fileupload-ui.css">', "", $html);
         $html_new = str_replace_first($matches_down[0], $replacement_down, $html);
         return str_replace_first($matches[0], $replacement, $html_new);
