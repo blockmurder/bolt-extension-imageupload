@@ -187,7 +187,7 @@ class Extension extends \Bolt\BaseExtension
     {
 
         $urlbase = $this->app['paths']['app'];
-        $url = $this->app['paths']['files'].'gallerien/';
+        $url = $this->app['paths']['files'].'galerien/';
 
         $assets = "
 
@@ -337,11 +337,11 @@ $('#selected_gallery li a').click(function() {
 		formData: { gallery_path: g_path },
 	   disableImageResize: /Android(?!.*Chrome)|Opera/
 	       .test(window.navigator && navigator.userAgent),
+	   imageQuality: 0.85,
 	   imageMaxWidth: 1200,
 	   imageMaxHeight: 1200,
 	   imageCrop: false ,// Force cropped images,
-	   imageQuality: 100,
-	   imageOrientation: true,
+	   imageOrientation: false,
 
 	});
 	

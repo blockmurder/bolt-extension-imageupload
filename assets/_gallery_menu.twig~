@@ -3,140 +3,140 @@
 				<li>
 				 	<a href="#">{{"now"|date('Y')}}</a>
 				 	<ul>
-						{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  first day of January && < first day of February" } %}
+						{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  first day of January && < first day of February" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">Januar</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datepublish|date('Y')}}/{{ item.datepublish|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 				 			</li>
 			 			{% endif %}
 				 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  first day of February && < first day of March" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  first day of February && < first day of March" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">Februar</a>				
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 				 			</li>
 			 			{% endif %}		
 				 			
-				 		{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  first day of March && < first day of April" } %}
+				 		{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  first day of March && < first day of April" } %}
 						{% if myentries != empty %}
 							<li>				
 								<a href="#">März</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>		
 				 		{% endif %}
 			 		
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  first day of April && < first day of May" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  first day of April && < first day of May" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">April</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}	
 			 		
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  first day of May && < first day of June" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  first day of May && < first day of June" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">Mai</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}
 			 		
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  first day of June && < first day of July" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  first day of June && < first day of July" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">Juni</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>
 			 			{% endif %}
 			 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  first day of July && < first day of August" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  first day of July && < first day of August" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">Juli</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}
 			 		
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  first day of August && < first day of September" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  first day of August && < first day of September" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">August</a>			
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}
 			 		
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  first day of September && < first day of October" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  first day of September && < first day of October" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">September</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}
 			 		
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  first day of October && < first day of November" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  first day of October && < first day of November" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">Oktober</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
@@ -144,28 +144,28 @@
 			 			{% endif %}
 				 		
 				 		
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  first day of November && < first day of December" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  first day of November && < first day of December" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">November</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>
 			 			{% endif %}
 				 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  first day of December && < +1 year, first day of January" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  first day of December && < +1 year, first day of January" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">December</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
@@ -176,167 +176,167 @@
 				<li> 	
 				 	<a href="#">{{"now"|date('Y') -1}}</a>
 				 	<ul>
-						{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -1 year, first day of January && < -1 year, first day of February" } %}
+						{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -1 year, first day of January && < -1 year, first day of February" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">Januar</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>
 			 			{% endif %}
 				 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -1 year, first day of February && < -1 year, first day of March" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -1 year, first day of February && < -1 year, first day of March" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">Februar</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>
 			 			{% endif %}		
 			 			
-						{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -1 year, first day of March && < -1 year, first day of April" } %}
+						{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -1 year, first day of March && < -1 year, first day of April" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">März</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>
 			 			{% endif %}
 			 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -1 year, first day of April && < -1 year, first day of May" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -1 year, first day of April && < -1 year, first day of May" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">April</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>
 			 			{% endif %}	
 			 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -1 year, first day of May && < -1 year, first day of June" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -1 year, first day of May && < -1 year, first day of June" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">Mai</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}
 			 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -1 year, first day of June && < -1 year, first day of July" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -1 year, first day of June && < -1 year, first day of July" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">Juni</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}
 			 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -1 year, first day of July && < -1 year, first day of August" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -1 year, first day of July && < -1 year, first day of August" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">Juli</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}
 			 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -1 year, first day of August && < -1 year, first day of September" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -1 year, first day of August && < -1 year, first day of September" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">August</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}
 			 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -1 year, first day of September && < -1 year, first day of October" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -1 year, first day of September && < -1 year, first day of October" } %}
 						{% if myentries != empty %}
 							<li>						
 								<a href="#">September</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}
 			 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -1 year, first day of October && < -1 year, first day of November" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -1 year, first day of October && < -1 year, first day of November" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">Oktober</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -1 year, first day of November && < -1 year, first day of December" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -1 year, first day of November && < -1 year, first day of December" } %}
 						{% if myentries != empty %}
 							<li>						
 								<a href="#">November</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}
 			 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -1 year, first day of December && < first day of January" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -1 year, first day of December && < first day of January" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">December</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
@@ -348,167 +348,167 @@
 				<li> 	
 				 	<a href="#">{{"now"|date('Y') -2}}</a>
 				 	<ul>
-						{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -2 year, first day of January && < -2 year, first day of February" } %}
+						{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -2 year, first day of January && < -2 year, first day of February" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">Januar</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>
 			 			{% endif %}
 				 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -2 year, first day of February && < -2 year, first day of March" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -2 year, first day of February && < -2 year, first day of March" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">Februar</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>
 			 			{% endif %}		
 			 			
-						{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -2 year, first day of March && < -2 year, first day of April" } %}
+						{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -2 year, first day of March && < -2 year, first day of April" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">März</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>
 			 			{% endif %}
 			 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -2 year, first day of April && < -2 year, first day of May" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -2 year, first day of April && < -2 year, first day of May" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">April</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>
 			 			{% endif %}	
 			 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -2 year, first day of May && < -2 year, first day of June" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -2 year, first day of May && < -2 year, first day of June" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">Mai</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}
 			 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -2 year, first day of June && < -2 year, first day of July" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -2 year, first day of June && < -2 year, first day of July" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">Juni</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}
 			 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -2 year, first day of July && < -2 year, first day of August" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -2 year, first day of July && < -2 year, first day of August" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">Juli</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}
 			 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -2 year, first day of August && < -2 year, first day of September" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -2 year, first day of August && < -2 year, first day of September" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">August</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}
 			 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -2 year, first day of September && < -2 year, first day of October" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -2 year, first day of September && < -2 year, first day of October" } %}
 						{% if myentries != empty %}
 							<li>						
 								<a href="#">September</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}
 			 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -2 year, first day of October && < -2 year, first day of November" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -2 year, first day of October && < -2 year, first day of November" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">Oktober</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -2 year, first day of November && < -2 year, first day of December" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -2 year, first day of November && < -2 year, first day of December" } %}
 						{% if myentries != empty %}
 							<li>						
 								<a href="#">November</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
 					 		</li>	
 			 			{% endif %}
 			 			
-			 			{% setcontent myentries = "gallerien" orderby '-datechanged' where { datepublish: ">=  -2 year, first day of December && < -1 year, first day of January" } %}
+			 			{% setcontent myentries = "gallerien" orderby '-date' where { date: ">=  -2 year, first day of December && < -1 year, first day of January" } %}
 						{% if myentries != empty %}
 							<li>
 								<a href="#">December</a>
 								<ul id="selected_gallery">				
 									{% for item in myentries %}
 								 		<li>
-											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}}</a>
+											<a href="#" id="{{ item.date|date('Y')}}/{{ item.date|date('F')}}/{{item.slug}}">{{item.title}} {{ item.date|date('d.m.Y')}}</a>
 								 		</li>
 							 		{% endfor %}
 					 			</ul>
