@@ -288,18 +288,18 @@ $(function (){
     $('#fileupload').fileupload({
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
-        url: '{urlbase}extensions/ImageUpload/server/php/',
+        url: '{urlbase}extensions/ImageUpload/server/',
 		  formData: { gallery_path: g_path },
 	    // Enable image resizing, except for Android and Opera,
 	    // which actually support image resizing, but fail to
 	    // send Blob objects via XHR requests:
 	    disableImageResize: /Android(?!.*Chrome)|Opera/
 	        .test(window.navigator && navigator.userAgent),
-	    imageMaxWidth: 1200,
-	    imageMaxHeight: 1200,
+	    imageMaxWidth: 1000,
+	    imageMaxHeight: 1000,
 	    imageCrop: false ,// Force cropped images,
-	    imageQuality: 100,
-	    imageOrientation: true,
+	    imageQuality: .85,
+	    imageOrientation: false,
 
 	 });
 
@@ -333,15 +333,15 @@ $('#selected_gallery li a').click(function() {
 	var g_path = '{url}'+$(this).attr('id')+'/';
 	$('.template-download').remove();
 	$('#fileupload').fileupload({
-		url: '{urlbase}extensions/ImageUpload/server/php/',
-		formData: { gallery_path: g_path },
-	   disableImageResize: /Android(?!.*Chrome)|Opera/
-	       .test(window.navigator && navigator.userAgent),
-	   imageQuality: 0.85,
-	   imageMaxWidth: 1200,
-	   imageMaxHeight: 1200,
-	   imageCrop: false ,// Force cropped images,
-	   imageOrientation: false,
+		url: '{urlbase}extensions/ImageUpload/server/',
+		formData: { gallery_path: g_path, watermark: true },
+	    disableImageResize: /Android(?!.*Chrome)|Opera/
+	        .test(window.navigator && navigator.userAgent),
+	    imageMaxWidth: 1000,
+	    imageMaxHeight: 1000,
+	    imageCrop: false ,// Force cropped images,
+	    imageQuality: .85,
+	    imageOrientation: false,
 
 	});
 	
