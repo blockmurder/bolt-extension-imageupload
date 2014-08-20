@@ -1,5 +1,7 @@
-# user roles that are allowed to use the menu-editor
+# user roles that are allowed to use the ImageUpload
 # this list implicitly grants access to users with role "root"
 # available roles (by default): root, admin, developer, chief-editor, editor, guest, everyone
 permissions: [ root, developer, admin, editor ]
+
+gallery_path: galerien    # example: /files/*gallery_path* --> gallery_path: galerien
 

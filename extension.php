@@ -46,7 +46,9 @@ class Extension extends \Bolt\BaseExtension
         } else {
             $this->config['permissions'][] = 'root';
         }
- 		  
+        
+ 		if (empty($this->config['gallery_path'])) { $this->config['gallery_path'] = "gallerys"; }
+ 		if (empty($this->config['insert_into_table'])) { $this->config['insert_into_table'] = "test1"; }
 
         // check if user has allowed role(s)
         $currentUser    = $this->app['users']->getCurrentUser();
@@ -86,6 +88,7 @@ class Extension extends \Bolt\BaseExtension
         // Set up some vars.
         $title = "ImageUpload";
         $urlbase = $this->app['paths']['app'];
+
  
         // add 'assets/' to the twigloader, so it can find the templates there.
         $this->app['twig.loader.filesystem']->addPath(__DIR__.'/assets/');
@@ -95,6 +98,7 @@ class Extension extends \Bolt\BaseExtension
             'title' => $title,
             'content' => $content,
             'urlbase' => $urlbase,
+            'test' => $test,
 
         ));
  
@@ -111,7 +115,7 @@ class Extension extends \Bolt\BaseExtension
     {
 
         $urlbase = $this->app['paths']['app'];
-        $url = $this->app['paths']['files'].'galerien/';
+        $url = $this->app['paths']['files'].$this->config['gallery_path'].'/';
 
         $assets = "
 
