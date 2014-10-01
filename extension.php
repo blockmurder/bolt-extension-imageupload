@@ -140,13 +140,13 @@ class Extension extends \Bolt\BaseExtension
 			$assets_down = "			
 <script src='{urlbase}extensions/ImageUpload/js/vendor/jquery.ui.widget.js'></script>
 
-<script src='http://blueimp.github.io/JavaScript-Templates/js/tmpl.min.js'></script>
+<script src='{urlbase}extensions/ImageUpload/js/tmpl.min.js'></script>
 
-<script src='http://blueimp.github.io/JavaScript-Load-Image/js/load-image.min.js'></script>
+<script src='{urlbase}extensions/ImageUpload/js/load-image.all.min.js'></script>
 
-<script src='http://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js'></script>
+<script src='{urlbase}extensions/ImageUpload/js/canvas-to-blob.min.js'></script>
 
-<script src='http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js'></script>
+<script src='{urlbase}extensions/ImageUpload/js/jquery.blueimp-gallery.min.js'></script>
 
 <script src='{urlbase}extensions/ImageUpload/js/jquery.iframe-transport.js'></script>
 
