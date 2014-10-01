@@ -16,15 +16,15 @@ class Extension extends \Bolt\BaseExtension
  
         $data = array(
             'name' => "ImageUpload",
-            'description' => "A skeleton extension for Bolt",
-            'author' => "Bob den Otter",
-            'link' => "http://bolt.cm",
-            'version' => "0.1",
+            'description' => "Uploads muliple images to specified path in files",
+            'author' => "blockmurder",
+            'link' => "http://blockmurder.ch",
+            'version' => "1.1",
             'required_bolt_version' => "1.1",
             'highest_bolt_version' => "1.3",
             'type' => "Backend",
-            'first_releasedate' => "2013-10-19",
-            'latest_releasedate' => "2013-10-19"
+            'first_releasedate' => "2014-07-19",
+            'latest_releasedate' => "2014-10-01"
         );
  
         return $data;
@@ -140,13 +140,13 @@ class Extension extends \Bolt\BaseExtension
 			$assets_down = "			
 <script src='{urlbase}extensions/ImageUpload/js/vendor/jquery.ui.widget.js'></script>
 
-<script src='http://blueimp.github.io/JavaScript-Templates/js/tmpl.min.js'></script>
+<script src='{urlbase}extensions/ImageUpload/js/tmpl.min.js'></script>
 
-<script src='http://blueimp.github.io/JavaScript-Load-Image/js/load-image.min.js'></script>
+<script src='{urlbase}extensions/ImageUpload/js/load-image.all.min.js'></script>
 
-<script src='http://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js'></script>
+<script src='{urlbase}extensions/ImageUpload/js/canvas-to-blob.min.js'></script>
 
-<script src='http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js'></script>
+<script src='{urlbase}extensions/ImageUpload/js/jquery.blueimp-gallery.min.js'></script>
 
 <script src='{urlbase}extensions/ImageUpload/js/jquery.iframe-transport.js'></script>
 
