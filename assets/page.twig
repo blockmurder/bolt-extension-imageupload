@@ -3,7 +3,13 @@
 	<div class="row-fluid">
 		<h1>Galerie auswählen:</h1>
 		<div class="span2 no-margin">
-			{% include '_gallery_menu.twig' %}
+            {% if navigation_by == "unsorted" %}
+                {% include '_gallery_menu_unsort.twig' %}
+            {% elseif navigation_by == "by_year" %}
+                {% include '_gallery_menu_by_year.twig' %}
+            {% else %}
+                Please check your config.yml for navigation settings!!!
+            {% endif %}
 		</div>
 		<div class="span9">
 		<!-- The file upload form used as target for the file upload widget -->
@@ -146,7 +152,7 @@
 <script type='text/javascript' id='demo1-javascript'>
 $(document).ready(function() {
 	// Initialize navgoco with default options
-	$('#gallery_sel').navgoco({
+	$('.gallery_sel').navgoco({
 		caretHtml: '',
 		accordion: false,
 		openClass: 'open',
@@ -163,7 +169,7 @@ $(document).ready(function() {
 		// Add Active class to clicked menu item
 		onClickAfter: function(e, submenu) {
 			e.preventDefault();
-			$('#gallery_sel').find('li').removeClass('active');
+			$('.gallery_sel').find('li').removeClass('active');
 			var li =  $(this).parent();
 			var lis = li.parents('li');
 			li.addClass('active');
@@ -173,12 +179,12 @@ $(document).ready(function() {
 
 	$('#collapseAll').click(function(e) {
 		e.preventDefault();
-		$('#gallery_sel').navgoco('toggle', false);
+		$('.gallery_sel').navgoco('toggle', false);
 	});
 
 	$('#expandAll').click(function(e) {
 		e.preventDefault();
-		$('#gallery_sel').navgoco('toggle', true);
+		$('.gallery_sel').navgoco('toggle', true);
 	});
 });
 </script>

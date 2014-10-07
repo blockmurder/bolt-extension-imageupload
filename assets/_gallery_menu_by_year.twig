@@ -1,0 +1,523 @@
+
+				<ul class="nav gallery_sel">
+				<li>
+				 	<a href="#">{{"now"|date('Y')}}</a>
+				 	<ul>
+						{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  first day of January && < first day of February" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">Januar</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+				 			</li>
+			 			{% endif %}
+				 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  first day of February && < first day of March" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">Februar</a>				
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+				 			</li>
+			 			{% endif %}		
+				 			
+				 		{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  first day of March && < first day of April" } %}
+						{% if myentries != empty %}
+							<li>				
+								<a href="#">März</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>		
+				 		{% endif %}
+			 		
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  first day of April && < first day of May" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">April</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}	
+			 		
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  first day of May && < first day of June" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">Mai</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+			 		
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  first day of June && < first day of July" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">Juni</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>
+			 			{% endif %}
+			 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  first day of July && < first day of August" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">Juli</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+			 		
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  first day of August && < first day of September" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">August</a>			
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+			 		
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  first day of September && < first day of October" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">September</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+			 		
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  first day of October && < first day of November" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">Oktober</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>		
+			 			{% endif %}
+				 		
+				 		
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  first day of November && < first day of December" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">November</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>
+			 			{% endif %}
+				 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  first day of December && < +1 year, first day of January" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">December</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>
+			 			{% endif %}
+				 	</ul>
+				</li>
+				<li> 	
+				 	<a href="#">{{"now"|date('Y') -1}}</a>
+				 	<ul>
+						{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -1 year, first day of January && < -1 year, first day of February" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">Januar</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>
+			 			{% endif %}
+				 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -1 year, first day of February && < -1 year, first day of March" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">Februar</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>
+			 			{% endif %}		
+			 			
+						{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -1 year, first day of March && < -1 year, first day of April" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">März</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>
+			 			{% endif %}
+			 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -1 year, first day of April && < -1 year, first day of May" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">April</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>
+			 			{% endif %}	
+			 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -1 year, first day of May && < -1 year, first day of June" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">Mai</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+			 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -1 year, first day of June && < -1 year, first day of July" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">Juni</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+			 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -1 year, first day of July && < -1 year, first day of August" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">Juli</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+			 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -1 year, first day of August && < -1 year, first day of September" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">August</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+			 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -1 year, first day of September && < -1 year, first day of October" } %}
+						{% if myentries != empty %}
+							<li>						
+								<a href="#">September</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+			 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -1 year, first day of October && < -1 year, first day of November" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">Oktober</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -1 year, first day of November && < -1 year, first day of December" } %}
+						{% if myentries != empty %}
+							<li>						
+								<a href="#">November</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+			 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -1 year, first day of December && < first day of January" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">December</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+	
+				 	</ul>
+				</li>
+				<li> 	
+				 	<a href="#">{{"now"|date('Y') -2}}</a>
+				 	<ul>
+						{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -2 year, first day of January && < -2 year, first day of February" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">Januar</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>
+			 			{% endif %}
+				 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -2 year, first day of February && < -2 year, first day of March" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">Februar</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>
+			 			{% endif %}		
+			 			
+						{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -2 year, first day of March && < -2 year, first day of April" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">März</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>
+			 			{% endif %}
+			 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -2 year, first day of April && < -2 year, first day of May" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">April</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>
+			 			{% endif %}	
+			 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -2 year, first day of May && < -2 year, first day of June" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">Mai</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+			 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -2 year, first day of June && < -2 year, first day of July" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">Juni</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+			 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -2 year, first day of July && < -2 year, first day of August" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">Juli</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+			 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -2 year, first day of August && < -2 year, first day of September" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">August</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+			 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -2 year, first day of September && < -2 year, first day of October" } %}
+						{% if myentries != empty %}
+							<li>						
+								<a href="#">September</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+			 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -2 year, first day of October && < -2 year, first day of November" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">Oktober</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -2 year, first day of November && < -2 year, first day of December" } %}
+						{% if myentries != empty %}
+							<li>						
+								<a href="#">November</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+			 			
+			 			{% setcontent myentries = "galleries" orderby '-datecreated' where { datecreated: ">=  -2 year, first day of December && < -1 year, first day of January" } %}
+						{% if myentries != empty %}
+							<li>
+								<a href="#">December</a>
+								<ul id="selected_gallery">				
+									{% for item in myentries %}
+								 		<li>
+											<a href="#" id="{{ item.datecreated|date('Y')}}/{{ item.datecreated|date('F')}}/{{item.slug}}">{{item.title}} {{ item.datecreated|date('d.m.Y')}}</a>
+								 		</li>
+							 		{% endfor %}
+					 			</ul>
+					 		</li>	
+			 			{% endif %}
+	
+				 	</ul>
+				</li>
+			</ul>
+			<p class="external">
+				<a href="#" id="collapseAll">Alles zuklappen</a> | <a href="#" id="expandAll">Alles aufklappen</a>
+			</p>

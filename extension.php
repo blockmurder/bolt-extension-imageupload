@@ -48,8 +48,8 @@ class Extension extends \Bolt\BaseExtension
         }
         
  		if (empty($this->config['gallery_path'])) { $this->config['gallery_path'] = "gallerys"; }
- 		if (empty($this->config['insert_into_table'])) { $this->config['insert_into_table'] = "test1"; }
-
+        if (empty($this->config['navigation'])) { $this->config['navigation'] = "by_year"; }
+        
         // check if user has allowed role(s)
         $currentUser    = $this->app['users']->getCurrentUser();
         $currentUserId  = $currentUser['id'];
@@ -98,8 +98,7 @@ class Extension extends \Bolt\BaseExtension
             'title' => $title,
             'content' => $content,
             'urlbase' => $urlbase,
-            'test' => $test,
-
+            'navigation_by' => $this->config['navigation'],
         ));
  
         return $this->injectAssets($html);
