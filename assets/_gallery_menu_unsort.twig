@@ -1,7 +1,7 @@
 
 
     
-        {% setcontent myentries = "galleries" orderby '-date' %}
+        {% setcontent myentries = "galleries" orderby '-datecreated' %}
         {% if myentries != empty %}
             <ul class="nav gallery_sel" id="selected_gallery">				
                 {% for item in myentries %}
