@@ -187,7 +187,8 @@ $(function (){
 	    imageCrop: false ,// Force cropped images,
 	    imageQuality: .85,
 	    imageOrientation: false,
-
+            sequentialUploads: true,
+            loadImageMaxFileSize: 20000000
 	 });
 
     // Enable iframe cross-domain access via redirect option:
@@ -229,7 +230,8 @@ $('#selected_gallery li a').click(function() {
 	    imageCrop: false ,// Force cropped images,
 	    imageQuality: .85,
 	    imageOrientation: false,
-
+            sequentialUploads: true,
+            loadImageMaxFileSize: 20000000
 	});
 	
 	// Load existing files:
