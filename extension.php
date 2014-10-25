@@ -19,12 +19,12 @@ class Extension extends \Bolt\BaseExtension
             'description' => "Uploads muliple images to specified path in files",
             'author' => "blockmurder",
             'link' => "http://blockmurder.ch",
-            'version' => "1.1",
+            'version' => "1.2",
             'required_bolt_version' => "1.1",
-            'highest_bolt_version' => "1.3",
+            'highest_bolt_version' => "1.6",
             'type' => "Backend",
             'first_releasedate' => "2014-07-19",
-            'latest_releasedate' => "2014-10-01"
+            'latest_releasedate' => "2014-10-25"
         );
  
         return $data;
