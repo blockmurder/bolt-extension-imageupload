@@ -1,0 +1,13 @@
+
+
+    
+        {% setcontent myentries = "galleries" orderby '-datecreated' %}
+        {% if myentries != empty %}
+            <ul class="nav gallery_sel" id="selected_gallery">				
+                {% for item in myentries %}
+                    <li><a href="#" id="{{item.slug}}">{{item.title}}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+			
+

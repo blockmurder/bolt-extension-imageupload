@@ -3,5 +3,9 @@
 # available roles (by default): root, admin, developer, chief-editor, editor, guest, everyone
 permissions: [ root, developer, admin, editor ]
 
-gallery_path: galerien    # example: /files/*gallery_path* --> gallery_path: galerien
+gallery_path: galleries    # example: /files/*gallery_path* --> gallery_path: galerien
 
+# this change order and navigation of galleries:
+# for by_year, path will be /files/*gallery_path*/*Year*/*Month*/*slug*
+# for unsorted, path will be /files/*gallery_path*/*slug*
+navigation: by_year        # valid values: by_year, unsorted 

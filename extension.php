@@ -19,12 +19,12 @@ class Extension extends \Bolt\BaseExtension
             'description' => "Uploads muliple images to specified path in files",
             'author' => "blockmurder",
             'link' => "http://blockmurder.ch",
-            'version' => "1.1",
+            'version' => "1.2",
             'required_bolt_version' => "1.1",
-            'highest_bolt_version' => "1.3",
+            'highest_bolt_version' => "1.6",
             'type' => "Backend",
             'first_releasedate' => "2014-07-19",
-            'latest_releasedate' => "2014-10-01"
+            'latest_releasedate' => "2014-10-25"
         );
  
         return $data;
@@ -48,8 +48,8 @@ class Extension extends \Bolt\BaseExtension
         }
         
  		if (empty($this->config['gallery_path'])) { $this->config['gallery_path'] = "gallerys"; }
- 		if (empty($this->config['insert_into_table'])) { $this->config['insert_into_table'] = "test1"; }
-
+        if (empty($this->config['navigation'])) { $this->config['navigation'] = "by_year"; }
+        
         // check if user has allowed role(s)
         $currentUser    = $this->app['users']->getCurrentUser();
         $currentUserId  = $currentUser['id'];
@@ -98,8 +98,7 @@ class Extension extends \Bolt\BaseExtension
             'title' => $title,
             'content' => $content,
             'urlbase' => $urlbase,
-            'test' => $test,
-
+            'navigation_by' => $this->config['navigation'],
         ));
  
         return $this->injectAssets($html);
@@ -188,7 +187,8 @@ $(function (){
 	    imageCrop: false ,// Force cropped images,
 	    imageQuality: .85,
 	    imageOrientation: false,
-
+            sequentialUploads: true,
+            loadImageMaxFileSize: 20000000
 	 });
 
     // Enable iframe cross-domain access via redirect option:
@@ -230,7 +230,8 @@ $('#selected_gallery li a').click(function() {
 	    imageCrop: false ,// Force cropped images,
 	    imageQuality: .85,
 	    imageOrientation: false,
-
+            sequentialUploads: true,
+            loadImageMaxFileSize: 20000000
 	});
 	
 	// Load existing files:
