@@ -29,6 +29,9 @@
 		}
 	},
 	"extra" : {
-		"bolt-assets" : "assets/"
+		"bolt-assets" : "assets/",
+		"branch-alias" : {
+			"dev-master" : "dev-develop"
+		}
 	}
 }
