@@ -1,35 +1,24 @@
 <?php
-// SampleExtension for Bolt, by Bob den Otter (bob@twokings.nl)
- 
-namespace ImageUpload;
 
-class ImageUploadException extends \Exception {};
-class Extension extends \Bolt\BaseExtension
-{
+namespace Bolt\Extension\blockmurder\ImageUpload;
+
+use Bolt\Application;
+
+/**
+ * Class Extension
+ * @package ImageUpload
+ * @author  blockmurder (info@blockmurder.ch)
+ */
+
+class Extension extends \Bolt\BaseExtension{
     private $authorized = false;
     public  $config;
-    /**
-     * Info block for SampleExtension Extension.
-     */
-    function info()
+
+    public function getName()
     {
- 
-        $data = array(
-            'name' => "ImageUpload",
-            'description' => "Uploads muliple images to specified path in files",
-            'author' => "blockmurder",
-            'link' => "http://blockmurder.ch",
-            'version' => "1.2",
-            'required_bolt_version' => "1.1",
-            'highest_bolt_version' => "1.6",
-            'type' => "Backend",
-            'first_releasedate' => "2014-07-19",
-            'latest_releasedate' => "2014-10-25"
-        );
- 
-        return $data;
- 
+        return "ImageUpload";
     }
+
  
     /**
      * Set up the routing and menu-item
@@ -38,7 +27,7 @@ class Extension extends \Bolt\BaseExtension
     {
 		  $this->config = $this->getConfig();    	
 
-    		        /**
+    	/**
          * ensure proper config
          */
         if (!isset($this->config['permissions']) || !is_array($this->config['permissions'])) {
@@ -49,7 +38,7 @@ class Extension extends \Bolt\BaseExtension
         
  		if (empty($this->config['gallery_path'])) { $this->config['gallery_path'] = "gallerys"; }
         if (empty($this->config['navigation'])) { $this->config['navigation'] = "by_year"; }
-        
+
         // check if user has allowed role(s)
         $currentUser    = $this->app['users']->getCurrentUser();
         $currentUserId  = $currentUser['id'];
@@ -60,16 +49,15 @@ class Extension extends \Bolt\BaseExtension
                 break;
             }
         }
-        if ($this->authorized){
+
+        if ($this->authorized)
+        {
+
             $this->path = $this->app['config']->get('general/branding/path') . '/extensions/image-upload';
-            $this->app->match($this->path, array($this, 'imageUpload'));
+            $this->app->match($this->path, array($this, 'ImageUpload'));
+            $this->addMenuOption('Image Upload', $this->app['paths']['bolt'] . 'extensions/image-upload', "fa:rocket");
 
-
-            $this->addMenuOption(__('ImageUpload'), $this->app['paths']['bolt'] . 'extensions/image-upload', "icon-list");
-	 
-	        // Add a menu option, only for users with level DEVELOPER
-	        //$this->addMenuOption('ImageUpload ', $path, "icon-exchange");
-	     }
+        }
  
  
     }
@@ -79,22 +67,20 @@ class Extension extends \Bolt\BaseExtension
      *
      * @return mixed
      */
-    public function imageUpload()
+    public function ImageUpload()
     {
- 
-        // Require a logged in user..
-        //$this->requireUserLevel(\Bolt\Users::DEVELOPER);
+
  
         // Set up some vars.
         $title = "ImageUpload";
-        $urlbase = $this->app['paths']['app'];
+        $urlbase = $this->app['paths']['extensions'] . 'local/blockmurder/imageupload';
 
  
-        // add 'assets/' to the twigloader, so it can find the templates there.
-        $this->app['twig.loader.filesystem']->addPath(__DIR__.'/assets/');
+        // add MenuEditor template namespace to twig
+        $this->app['twig.loader.filesystem']->addPath(__DIR__.'/views/', 'ImageUpload');
  
         // render the template.
-        $html = $this->app['twig']->render('page.twig', array(
+        $html = $this->app['render']->render('@ImageUpload/_imageupload.twig', array(
             'title' => $title,
             'content' => $content,
             'urlbase' => $urlbase,
@@ -103,7 +89,18 @@ class Extension extends \Bolt\BaseExtension
  
         return $this->injectAssets($html);
  
-    }    
+    }
+    
+    private function str_replace_first($needle, $replacement, $haystack) {
+        $needle_start = strpos($haystack, $needle);
+        $needle_end = $needle_start + strlen($needle);
+        if($needle_start!==false) {
+            $to_replace = substr($haystack, 0, $needle_end);
+            return str_replace($needle, $replacement, $to_replace) . substr($haystack, $needle_end);
+        }
+        else
+            return $haystack;
+    }   
     
     
         /**
@@ -113,55 +110,52 @@ class Extension extends \Bolt\BaseExtension
     private function injectAssets($html)
     {
 
-        $urlbase = $this->app['paths']['app'];
+        $urlbase = $this->app['paths']['extensions'] . 'local/blockmurder/imageupload';
         $url = $this->app['paths']['files'].$this->config['gallery_path'].'/';
 
         $assets = "
 
-<link rel='stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
-<link rel='stylesheet' href='{urlbase}extensions/ImageUpload/css/style.css'>
-
 <link rel='stylesheet' href='http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css'>
 
-<link rel='stylesheet' href='{urlbase}extensions/ImageUpload/css/jquery.fileupload.css'>
-<link rel='stylesheet' href='{urlbase}extensions/ImageUpload/css/jquery.fileupload-ui2.css'>
+<link rel='stylesheet' href='{urlbase}/assets/css/jquery.fileupload.css'>
+<link rel='stylesheet' href='{urlbase}/assets/css/jquery.fileupload-ui2.css'>
 
 
-<script src='{urlbase}extensions/ImageUpload/js/vendor/navgoco-master/src/jquery.cookie.js'></script>
+<script src='{urlbase}/assets/js/vendor/navgoco-master/src/jquery.cookie.js'></script>
 
-<script type='text/javascript' src='{urlbase}extensions/ImageUpload/js/vendor/navgoco-master/src/jquery.navgoco.js'></script>
-<link rel='stylesheet' type='text/css' href='{urlbase}extensions/ImageUpload/js/vendor/navgoco-master/src/jquery.navgoco.css' media='screen' />
+<script type='text/javascript' src='{urlbase}/assets/js/vendor/navgoco-master/src/jquery.navgoco.js'></script>
+<link rel='stylesheet' type='text/css' href='{urlbase}/assets/js/vendor/navgoco-master/src/jquery.navgoco.css' media='screen' />
 
-<noscript><link rel='stylesheet' href='{urlbase}extensions/ImageUpload/css/jquery.fileupload-noscript.css'></noscript>
-<noscript><link rel='stylesheet' href='{urlbase}extensions/ImageUpload/css/jquery.fileupload-ui-noscript.css'></noscript>
+<noscript><link rel='stylesheet' href='{urlbase}/assets/css/jquery.fileupload-noscript.css'></noscript>
+<noscript><link rel='stylesheet' href='{urlbase}/assets/css/jquery.fileupload-ui-noscript.css'></noscript>
 ";
 			
 			$assets_down = "			
-<script src='{urlbase}extensions/ImageUpload/js/vendor/jquery.ui.widget.js'></script>
+<script src='{urlbase}/assets/js/vendor/jquery.ui.widget.js'></script>
 
-<script src='{urlbase}extensions/ImageUpload/js/tmpl.min.js'></script>
+<script src='{urlbase}/assets/js/tmpl.min.js'></script>
 
-<script src='{urlbase}extensions/ImageUpload/js/load-image.all.min.js'></script>
+<script src='{urlbase}/assets/js/load-image.all.min.js'></script>
 
-<script src='{urlbase}extensions/ImageUpload/js/canvas-to-blob.min.js'></script>
+<script src='{urlbase}/assets/js/canvas-to-blob.min.js'></script>
 
-<script src='{urlbase}extensions/ImageUpload/js/jquery.blueimp-gallery.min.js'></script>
+<script src='{urlbase}/assets/js/jquery.blueimp-gallery.min.js'></script>
 
-<script src='{urlbase}extensions/ImageUpload/js/jquery.iframe-transport.js'></script>
+<script src='{urlbase}/assets/js/jquery.iframe-transport.js'></script>
 
-<script src='{urlbase}extensions/ImageUpload/js/jquery.fileupload.js'></script>
+<script src='{urlbase}/assets/js/jquery.fileupload.js'></script>
 
-<script src='{urlbase}extensions/ImageUpload/js/jquery.fileupload-process.js'></script>
+<script src='{urlbase}/assets/js/jquery.fileupload-process.js'></script>
 
-<script src='{urlbase}extensions/ImageUpload/js/jquery.fileupload-image.js'></script>
+<script src='{urlbase}/assets/js/jquery.fileupload-image.js'></script>
 
-<script src='{urlbase}extensions/ImageUpload/js/jquery.fileupload-audio.js'></script>
+<script src='{urlbase}/assets/js/jquery.fileupload-audio.js'></script>
 
-<script src='{urlbase}extensions/ImageUpload/js/jquery.fileupload-video.js'></script>
+<script src='{urlbase}/assets/js/jquery.fileupload-video.js'></script>
 
-<script src='{urlbase}extensions/ImageUpload/js/jquery.fileupload-validate.js'></script>
+<script src='{urlbase}/assets/js/jquery.fileupload-validate.js'></script>
 
-<script src='{urlbase}extensions/ImageUpload/js/jquery.fileupload-ui.js'></script>
+<script src='{urlbase}/assets/js/jquery.fileupload-ui.js'></script>
 
 <script>        
 $(function (){
@@ -175,7 +169,7 @@ $(function (){
     $('#fileupload').fileupload({
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
-        url: '{urlbase}extensions/ImageUpload/server/',
+        url: '{urlbase}/server/',
 		  formData: { gallery_path: g_path },
 	    // Enable image resizing, except for Android and Opera,
 	    // which actually support image resizing, but fail to
@@ -221,7 +215,7 @@ $('#selected_gallery li a').click(function() {
 	var g_path = '{url}'+$(this).attr('id')+'/';
 	$('.template-download').remove();
 	$('#fileupload').fileupload({
-		url: '{urlbase}extensions/ImageUpload/server/',
+		url: '{urlbase}/server/',
 		formData: { gallery_path: g_path, watermark: true },
 	    disableImageResize: /Android(?!.*Chrome)|Opera/
 	        .test(window.navigator && navigator.userAgent),
@@ -265,11 +259,8 @@ $('#selected_gallery li a').click(function() {
         $replacement = sprintf("%s\t%s\n%s", $matches[1], $assets, $matches[0]);
         $replacement_down = sprintf("%s\t%s\n%s", $matches_down[1], $assets_down, $matches_down[0]);
         //$html = str_replace('<link rel="stylesheet" href="'.$urlbase.'view/css/bootstrap.min.css">', "", $html);
-        $html = str_replace('<link rel="stylesheet" href="'.$urlbase.'view/lib/upload/jquery.fileupload-ui.css">', "", $html);
-        $html_new = str_replace_first($matches_down[0], $replacement_down, $html);
-        return str_replace_first($matches[0], $replacement, $html_new);
-
+        $html = str_replace($this->app['paths']['root'].'app/view/lib/upload/jquery.fileupload-ui.css', $urlbase."/assets/css/jquery.fileupload-ui2.css", $html);
+        $html_new = $this->str_replace_first($matches_down[0], $replacement_down, $html);
+        return $this->str_replace_first($matches[0], $replacement, $html_new); 
     }
- 
- 
 }
