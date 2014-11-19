@@ -73,7 +73,7 @@ class Extension extends \Bolt\BaseExtension{
  
         // Set up some vars.
         $title = "ImageUpload";
-        $urlbase = $this->app['paths']['extensions'] . 'local/blockmurder/imageupload';
+        $urlbase = $this->app['paths']['extensions'] . 'vendor/bolt/imageupload/';
 
  
         // add MenuEditor template namespace to twig
@@ -110,7 +110,7 @@ class Extension extends \Bolt\BaseExtension{
     private function injectAssets($html)
     {
 
-        $urlbase = $this->app['paths']['extensions'] . 'local/blockmurder/imageupload';
+        $urlbase = $this->app['paths']['extensions'] . 'vendor/bolt/imageupload/';
         $url = $this->app['paths']['files'].$this->config['gallery_path'].'/';
 
         $assets = "
