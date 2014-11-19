@@ -24,7 +24,8 @@
 		"psr-4" : {
 			"Bolt\\Extension\\blockmurder\\ImageUpload\\" : [
 				"",
-				"server/"
+				"server/",
+				"assets/"
 			]
 		}
 	},
