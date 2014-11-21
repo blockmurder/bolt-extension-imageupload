@@ -12,6 +12,7 @@ navigation: by_year        # valid values: by_year, unsorted
 
 
 # settings for jQuery File Upload
+# watermark image is located in extensions/vendor/blockmurder/imageupload
 watermark: true                 # overlays watermark on resized images when true
 imageMaxWidth: 1000             # The maximum width of resized images.
 imageMaxHeight: 1000            # The maximum height of resized images.

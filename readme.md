@@ -13,6 +13,8 @@ Settings
 
 ```watermark: true```                 overlays watermark on resized images when true
 
+*watermark image is located in extensions/vendor/blockmurder/imageupload*
+
 ```imageMaxWidth: 1000```             The maximum width of resized images.
 
 ```imageMaxHeight: 1000```            The maximum height of resized images.
