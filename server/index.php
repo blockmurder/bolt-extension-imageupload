@@ -19,10 +19,10 @@ if(empty($_REQUEST['gallery_path'])){
 else {
     $custom_gallery = $_REQUEST['gallery_path'];
 }
-if(empty($_GET['watermark'])){
+if(empty($_REQUEST['watermark'])){
     $watermark = true;
 }
 else {
-    $watermark = $_GET['watermark'];
+    $watermark = $_REQUEST['watermark'];
 }
 $upload_handler = new UploadHandler(array('upload_dir' => $custom_dir.$custom_gallery, 'upload_url' => $custom_gallery, 'watermark' => $watermark));

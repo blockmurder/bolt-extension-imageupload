@@ -36,8 +36,15 @@ class Extension extends \Bolt\BaseExtension{
             $this->config['permissions'][] = 'root';
         }
 
- 		if (empty($this->config['gallery_path'])) { $this->config['gallery_path'] = "gallerys"; }
+        if (empty($this->config['gallery_path'])) { $this->config['gallery_path'] = "gallerys"; }
         if (empty($this->config['navigation'])) { $this->config['navigation'] = "by_year"; }
+        if (empty($this->config['watermark'])) { $this->config['watermark'] = "true"; }
+        if (empty($this->config['imageMaxWidth'])) { $this->config['imageMaxWidth'] = "1000"; }
+        if (empty($this->config['imageMaxHeight'])) { $this->config['imageMaxHeight'] = "1000"; }
+        if (empty($this->config['imageCrop'])) { $this->config['imageCrop'] = "false"; }
+        if (empty($this->config['imageQuality'])) { $this->config['imageQuality'] = ".85"; }
+        if (empty($this->config['imageOrientation'])) { $this->config['imageOrientation'] = "false"; }
+        if (empty($this->config['loadImageMaxFileSize'])) { $this->config['loadImageMaxFileSize'] = "20000000"; }
 
         // check if user has allowed role(s)
         $currentUser    = $this->app['users']->getCurrentUser();
@@ -69,12 +76,8 @@ class Extension extends \Bolt\BaseExtension{
      */
     public function ImageUpload()
     {
-
-
-        // Set up some vars.
         $title = "ImageUpload";
         $urlbase = $this->app['paths']['extensions'] . 'vendor/blockmurder/imageupload';
-
 
         // add MenuEditor template namespace to twig
         $this->app['twig.loader.filesystem']->addPath(__DIR__.'/views/', 'ImageUpload');
@@ -91,7 +94,8 @@ class Extension extends \Bolt\BaseExtension{
 
     }
 
-    private function str_replace_first($needle, $replacement, $haystack) {
+    private function str_replace_first($needle, $replacement, $haystack)
+    {
         $needle_start = strpos($haystack, $needle);
         $needle_end = $needle_start + strlen($needle);
         if($needle_start!==false) {
@@ -112,6 +116,7 @@ class Extension extends \Bolt\BaseExtension{
 
         $urlbase = $this->app['paths']['extensions'] . 'vendor/blockmurder/imageupload';
         $url = $this->app['paths']['files'].$this->config['gallery_path'].'/';
+        $watermark = $this->config['watermark'];
 
         $assets = "
 
@@ -170,19 +175,19 @@ $(function (){
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
         url: '{urlbase}/server/',
-		  formData: { gallery_path: g_path },
+		  formData: { gallery_path: g_path, watermark: {watermark} },
 	    // Enable image resizing, except for Android and Opera,
 	    // which actually support image resizing, but fail to
 	    // send Blob objects via XHR requests:
 	    disableImageResize: /Android(?!.*Chrome)|Opera/
 	        .test(window.navigator && navigator.userAgent),
-	    imageMaxWidth: 1000,
-	    imageMaxHeight: 1000,
-	    imageCrop: false ,// Force cropped images,
-	    imageQuality: .85,
-	    imageOrientation: false,
-            sequentialUploads: true,
-            loadImageMaxFileSize: 20000000
+	    imageMaxWidth: {imageMaxWidth},
+	    imageMaxHeight: {imageMaxHeight},
+	    imageCrop: {imageCrop} ,// Force cropped images,
+	    imageQuality: {imageQuality},
+	    imageOrientation: {imageOrientation},
+      sequentialUploads: true,
+      loadImageMaxFileSize: {loadImageMaxFileSize}
 	 });
 
     // Enable iframe cross-domain access via redirect option:
@@ -200,7 +205,7 @@ $(function (){
         $.ajax({
             // Uncomment the following to send cross-domain cookies:
             //xhrFields: {withCredentials: true},
-            url: $('#fileupload').fileupload('option', 'url')+'?gallery_path='+g_path,
+            url: $('#fileupload').fileupload('option', 'url')+'?gallery_path='+g_path+'&watermark={watermark}',
             dataType: 'json',
             context: $('#fileupload')[0]
         }).always(function () {
@@ -216,22 +221,22 @@ $('#selected_gallery li a').click(function() {
 	$('.template-download').remove();
 	$('#fileupload').fileupload({
 		url: '{urlbase}/server/',
-		formData: { gallery_path: g_path, watermark: true },
+		formData: { gallery_path: g_path, watermark: {watermark} },
 	    disableImageResize: /Android(?!.*Chrome)|Opera/
 	        .test(window.navigator && navigator.userAgent),
-	    imageMaxWidth: 1000,
-	    imageMaxHeight: 1000,
-	    imageCrop: false ,// Force cropped images,
-	    imageQuality: .85,
-	    imageOrientation: false,
-            sequentialUploads: true,
-            loadImageMaxFileSize: 20000000
+      imageMaxWidth: {imageMaxWidth},
+      imageMaxHeight: {imageMaxHeight},
+      imageCrop: {imageCrop} ,// Force cropped images,
+      imageQuality: {imageQuality},
+      imageOrientation: {imageOrientation},
+      sequentialUploads: true,
+      loadImageMaxFileSize: {loadImageMaxFileSize}
 	});
 
 	// Load existing files:
 	$('#fileupload').addClass('fileupload-processing');
    	$.ajax({
-			url: $('#fileupload').fileupload('option', 'url')+'?gallery_path='+g_path,
+			url: $('#fileupload').fileupload('option', 'url')+'?gallery_path='+g_path+'&watermark={watermark}',
         	dataType: 'json',
         	context: $('#fileupload')[0]
 		}).always(function () {
@@ -252,6 +257,13 @@ $('#selected_gallery li a').click(function() {
         $assets = preg_replace('~\{urlbase\}~', $urlbase, $assets);
         $assets_down = preg_replace('~\{urlbase\}~', $urlbase, $assets_down);
         $assets_down = preg_replace('~\{url\}~', $url, $assets_down);
+        $assets_down = preg_replace('~\{watermark\}~', $this->config['watermark'], $assets_down);
+        $assets_down = preg_replace('~\{imageMaxWidth\}~', $this->config['imageMaxWidth'], $assets_down);
+        $assets_down = preg_replace('~\{imageMaxHeight\}~', $this->config['imageMaxHeight'], $assets_down);
+        $assets_down = preg_replace('~\{imageCrop\}~', $this->config['imageCrop'], $assets_down);
+        $assets_down = preg_replace('~\{imageQuality\}~', $this->config['imageQuality'], $assets_down);
+        $assets_down = preg_replace('~\{imageOrientation\}~', $this->config['imageOrientation'], $assets_down);
+        $assets_down = preg_replace('~\{loadImageMaxFileSize\}~', $this->config['loadImageMaxFileSize'], $assets_down);
 
         // Insert just before </head>
         preg_match("~^([ \t]*)</head~mi", $html, $matches);

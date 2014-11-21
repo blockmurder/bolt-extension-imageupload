@@ -7,9 +7,24 @@ Settings
 --------
 ```gallery_path: path``` sets the path after _/files/_
 
- ```navigation:by_year``` changes the order and navigation of galleries:
+ ```navigation: by_year``` changes the order and navigation of galleries:
 * __by_year__ path will be /files/*gallery_path*/*Year*/*Month*/*slug*
 * __unsorted__ path will be /files/*gallery_path*/*slug*
+
+```watermark: true```                 overlays watermark on resized images when true
+
+```imageMaxWidth: 1000```             The maximum width of resized images.
+
+```imageMaxHeight: 1000```            The maximum height of resized images.
+
+```imageCrop: false```                Define if resized images should be cropped or only scaled.
+
+```imageQuality: .85```               Sets the quality parameter given to the canvas.toBlob() call when saving resized images.
+
+```imageOrientation: false```         Defines the image orientation (1-8) or takes the orientation value from Exif data if set to true.
+
+```loadImageMaxFileSize: 20000000```  The maximum file size of images to load.
+
 
 __upload path changes accordingly to the navigation order__
 
@@ -35,3 +50,7 @@ galleries:
     recordsperpage: 100
     default_status: publish
 ```
+
+Credits
+-------
+This extension is built with [jQuery File Upload](https://blueimp.github.io/jQuery-File-Upload/)
