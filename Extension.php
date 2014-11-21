@@ -19,13 +19,13 @@ class Extension extends \Bolt\BaseExtension{
         return "ImageUpload";
     }
 
- 
+
     /**
      * Set up the routing and menu-item
      */
     public function initialize()
     {
-		  $this->config = $this->getConfig();    	
+		  $this->config = $this->getConfig();
 
     	/**
          * ensure proper config
@@ -35,7 +35,7 @@ class Extension extends \Bolt\BaseExtension{
         } else {
             $this->config['permissions'][] = 'root';
         }
-        
+
  		if (empty($this->config['gallery_path'])) { $this->config['gallery_path'] = "gallerys"; }
         if (empty($this->config['navigation'])) { $this->config['navigation'] = "by_year"; }
 
@@ -58,10 +58,10 @@ class Extension extends \Bolt\BaseExtension{
             $this->addMenuOption('Image Upload', $this->app['paths']['bolt'] . 'extensions/image-upload', "fa:rocket");
 
         }
- 
- 
+
+
     }
-    
+
     /**
      * Callback function, where the actual work is done.
      *
@@ -70,15 +70,15 @@ class Extension extends \Bolt\BaseExtension{
     public function ImageUpload()
     {
 
- 
+
         // Set up some vars.
         $title = "ImageUpload";
         $urlbase = $this->app['paths']['extensions'] . 'vendor/blockmurder/imageupload';
 
- 
+
         // add MenuEditor template namespace to twig
         $this->app['twig.loader.filesystem']->addPath(__DIR__.'/views/', 'ImageUpload');
- 
+
         // render the template.
         $html = $this->app['render']->render('@ImageUpload/_imageupload.twig', array(
             'title' => $title,
@@ -86,11 +86,11 @@ class Extension extends \Bolt\BaseExtension{
             'urlbase' => $urlbase,
             'navigation_by' => $this->config['navigation'],
         ));
- 
+
         return $this->injectAssets($html);
- 
+
     }
-    
+
     private function str_replace_first($needle, $replacement, $haystack) {
         $needle_start = strpos($haystack, $needle);
         $needle_end = $needle_start + strlen($needle);
@@ -100,9 +100,9 @@ class Extension extends \Bolt\BaseExtension{
         }
         else
             return $haystack;
-    }   
-    
-    
+    }
+
+
         /**
      * @param $html
      * @return mixed
@@ -110,7 +110,7 @@ class Extension extends \Bolt\BaseExtension{
     private function injectAssets($html)
     {
 
-        $urlbase = $this->app['paths']['extensions'] . 'vendor/blockmuder/imageupload';
+        $urlbase = $this->app['paths']['extensions'] . 'vendor/blockmurder/imageupload';
         $url = $this->app['paths']['files'].$this->config['gallery_path'].'/';
 
         $assets = "
@@ -129,8 +129,8 @@ class Extension extends \Bolt\BaseExtension{
 <noscript><link rel='stylesheet' href='{urlbase}/assets/css/jquery.fileupload-noscript.css'></noscript>
 <noscript><link rel='stylesheet' href='{urlbase}/assets/css/jquery.fileupload-ui-noscript.css'></noscript>
 ";
-			
-			$assets_down = "			
+
+			$assets_down = "
 <script src='{urlbase}/assets/js/vendor/jquery.ui.widget.js'></script>
 
 <script src='{urlbase}/assets/js/tmpl.min.js'></script>
@@ -157,13 +157,13 @@ class Extension extends \Bolt\BaseExtension{
 
 <script src='{urlbase}/assets/js/jquery.fileupload-ui.js'></script>
 
-<script>        
+<script>
 $(function (){
     'use strict';
-    
+
     //var g_input = $('#gallery_path');
     var g_path = '{url}'+'temp/';
-    
+
 
     // Initialize the jQuery File Upload widget:
     $('#fileupload').fileupload({
@@ -209,8 +209,8 @@ $(function (){
             $(this).fileupload('option', 'done')
                 .call(this, $.Event('done'), {result: result});
         });
-        
-        
+
+
 $('#selected_gallery li a').click(function() {
 	var g_path = '{url}'+$(this).attr('id')+'/';
 	$('.template-download').remove();
@@ -227,7 +227,7 @@ $('#selected_gallery li a').click(function() {
             sequentialUploads: true,
             loadImageMaxFileSize: 20000000
 	});
-	
+
 	// Load existing files:
 	$('#fileupload').addClass('fileupload-processing');
    	$.ajax({
@@ -261,6 +261,6 @@ $('#selected_gallery li a').click(function() {
         //$html = str_replace('<link rel="stylesheet" href="'.$urlbase.'view/css/bootstrap.min.css">', "", $html);
         $html = str_replace($this->app['paths']['root'].'app/view/lib/upload/jquery.fileupload-ui.css', $urlbase."/assets/css/jquery.fileupload-ui2.css", $html);
         $html_new = $this->str_replace_first($matches_down[0], $replacement_down, $html);
-        return $this->str_replace_first($matches[0], $replacement, $html_new); 
+        return $this->str_replace_first($matches[0], $replacement, $html_new);
     }
 }
