@@ -36,15 +36,15 @@ class Extension extends \Bolt\BaseExtension{
             $this->config['permissions'][] = 'root';
         }
 
-        if (empty($this->config['gallery_path'])) { $this->config['gallery_path'] = "gallerys"; }
-        if (empty($this->config['navigation'])) { $this->config['navigation'] = "by_year"; }
-        if (empty($this->config['watermark'])) { $this->config['watermark'] = "true"; }
-        if (empty($this->config['imageMaxWidth'])) { $this->config['imageMaxWidth'] = "1000"; }
-        if (empty($this->config['imageMaxHeight'])) { $this->config['imageMaxHeight'] = "1000"; }
-        if (empty($this->config['imageCrop'])) { $this->config['imageCrop'] = "false"; }
-        if (empty($this->config['imageQuality'])) { $this->config['imageQuality'] = ".85"; }
-        if (empty($this->config['imageOrientation'])) { $this->config['imageOrientation'] = "false"; }
-        if (empty($this->config['loadImageMaxFileSize'])) { $this->config['loadImageMaxFileSize'] = "20000000"; }
+        if (!isset($this->config['gallery_path'])) { $this->config['gallery_path'] = "gallerys"; }
+        if (!isset($this->config['navigation'])) { $this->config['navigation'] = "by_year"; }
+        if (!isset($this->config['watermark']) || !is_bool($this->config['watermark'])){ $this->config['watermark'] = "false"; }
+        if (!isset($this->config['imageMaxWidth'])) { $this->config['imageMaxWidth'] = "1000"; }
+        if (!isset($this->config['imageMaxHeight'])) { $this->config['imageMaxHeight'] = "1000"; }
+        if (!isset($this->config['imageCrop']) || !is_bool($this->config['imageCrop'])){ $this->config['imageCrop'] = "false"; }
+        if (!isset($this->config['imageQuality'])) { $this->config['imageQuality'] = ".85"; }
+        if (!isset($this->config['imageOrientation']) || !is_bool($this->config['imageOrientation'])){ $this->config['imageOrientation'] = "false"; }
+        if (!isset($this->config['loadImageMaxFileSize'])) { $this->config['loadImageMaxFileSize'] = "20000000"; }
 
         // check if user has allowed role(s)
         $currentUser    = $this->app['users']->getCurrentUser();
@@ -116,7 +116,6 @@ class Extension extends \Bolt\BaseExtension{
 
         $urlbase = $this->app['paths']['extensions'] . 'vendor/blockmurder/imageupload';
         $url = $this->app['paths']['files'].$this->config['gallery_path'].'/';
-        $watermark = $this->config['watermark'];
 
         $assets = "
 
@@ -257,12 +256,12 @@ $('#selected_gallery li a').click(function() {
         $assets = preg_replace('~\{urlbase\}~', $urlbase, $assets);
         $assets_down = preg_replace('~\{urlbase\}~', $urlbase, $assets_down);
         $assets_down = preg_replace('~\{url\}~', $url, $assets_down);
-        $assets_down = preg_replace('~\{watermark\}~', $this->config['watermark'], $assets_down);
+        $assets_down = preg_replace('~\{watermark\}~', ($this->config['watermark']) ? 'true' : 'false', $assets_down);
         $assets_down = preg_replace('~\{imageMaxWidth\}~', $this->config['imageMaxWidth'], $assets_down);
         $assets_down = preg_replace('~\{imageMaxHeight\}~', $this->config['imageMaxHeight'], $assets_down);
-        $assets_down = preg_replace('~\{imageCrop\}~', $this->config['imageCrop'], $assets_down);
+        $assets_down = preg_replace('~\{imageCrop\}~', ($this->config['imageCrop']) ? 'true' : 'false', $assets_down);
         $assets_down = preg_replace('~\{imageQuality\}~', $this->config['imageQuality'], $assets_down);
-        $assets_down = preg_replace('~\{imageOrientation\}~', $this->config['imageOrientation'], $assets_down);
+        $assets_down = preg_replace('~\{imageOrientation\}~', ($this->config['imageOrientation']) ? 'true' : 'false', $assets_down);
         $assets_down = preg_replace('~\{loadImageMaxFileSize\}~', $this->config['loadImageMaxFileSize'], $assets_down);
 
         // Insert just before </head>

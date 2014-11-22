@@ -23,6 +23,6 @@ if(empty($_REQUEST['watermark'])){
     $watermark = true;
 }
 else {
-    $watermark = $_REQUEST['watermark'];
+    $watermark = $_REQUEST['watermark'] === 'true'? true: false;
 }
 $upload_handler = new UploadHandler(array('upload_dir' => $custom_dir.$custom_gallery, 'upload_url' => $custom_gallery, 'watermark' => $watermark));
