@@ -1,4 +1,4 @@
-ImageUpload
+ImageUpload v2.0
 =======================
 
 This backend extension allows you to upload multiple images in a specific subfolder in _/files_. It uses the title of the entry as subfolder
