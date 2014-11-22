@@ -1,21 +1,58 @@
-ImageUpload
+ImageUpload v2.0
 =======================
 
-This backend extension allows you to upload multiple images in a specific subfolder in /files. It uses the title of the entry as subfolder
-
-__Please check your settings in__ ```config.yml```
+This backend extension allows you to upload multiple images in a specific subfolder in _/files_. It uses the title of the entry as subfolder
 
 Settings
 --------
-```gallery_path``` sets the path after the _/files/_ folder
+```gallery_path: path``` sets the path after _/files/_
 
-```gallery_path: galleries    # example: /files/*gallery_path* --> gallery_path: galerien```
+ ```navigation: by_year``` changes the order and navigation of galleries:
+* __by_year__ path will be /files/*gallery_path*/*Year*/*Month*/*slug*
+* __unsorted__ path will be /files/*gallery_path*/*slug*
+
+```watermark: true```                 overlays watermark on resized images when true
+
+*watermark image is located in extensions/vendor/blockmurder/imageupload*
+
+```imageMaxWidth: 1000```             The maximum width of resized images.
+
+```imageMaxHeight: 1000```            The maximum height of resized images.
+
+```imageCrop: false```                Define if resized images should be cropped or only scaled.
+
+```imageQuality: .85```               Sets the quality parameter given to the canvas.toBlob() call when saving resized images.
+
+```imageOrientation: false```         Defines the image orientation (1-8) or takes the orientation value from Exif data if set to true.
+
+```loadImageMaxFileSize: 20000000```  The maximum file size of images to load.
 
 
- ```navigation``` changes the order and navigation of galleries:
-* for **by_year**, path will be /files/*gallery_path*/*Year*/*Month*/*slug*
-* for __unsorted__, path will be /files/*gallery_path*/*slug*
+__upload path changes accordingly to the navigation order__
 
-```navigation: by_year        # valid values: by_year, unsorted``` 
+In order to get this extension to work, you need a new contetntype, e.g.:
 
-__Navigation in the backend ImageUpload changes according to the path__
+```
+galleries:
+    name: galleries
+    singular_name: gallery
+    fields:
+        date:
+            type: date
+            default: "today"
+            required: true
+        title:
+            type: text
+        slug:
+            type: slug
+            uses: title
+    record_template: gallery.twig
+    listing_template: galleries.twig
+    taxonomy: [ tags ]
+    recordsperpage: 100
+    default_status: publish
+```
+
+Credits
+-------
+This extension is built with [jQuery File Upload](https://blueimp.github.io/jQuery-File-Upload/)

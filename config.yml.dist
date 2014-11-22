@@ -1,0 +1,22 @@
+# user roles that are allowed to use the ImageUpload
+# this list implicitly grants access to users with role "root"
+# available roles (by default): root, admin, developer, chief-editor, editor, guest, everyone
+permissions: [ root, developer, admin, editor ]
+
+gallery_path: galleries    # example: /files/*gallery_path* --> gallery_path: galerien
+
+# this change order and navigation of galleries:
+# for by_year, path will be /files/*gallery_path*/*Year*/*Month*/*slug*
+# for unsorted, path will be /files/*gallery_path*/*slug*
+navigation: by_year        # valid values: by_year, unsorted
+
+
+# settings for jQuery File Upload
+# watermark image is located in extensions/vendor/blockmurder/imageupload
+watermark: true                 # overlays watermark on resized images when true
+imageMaxWidth: 1000             # The maximum width of resized images.
+imageMaxHeight: 1000            # The maximum height of resized images.
+imageCrop: false                # Define if resized images should be cropped or only scaled.
+imageQuality: .85               # Sets the quality parameter given to the canvas.toBlob() call when saving resized images.
+imageOrientation: false         # Defines the image orientation (1-8) or takes the orientation value from Exif data if set to true.
+loadImageMaxFileSize: 20000000  #The maximum file size of images to load.
