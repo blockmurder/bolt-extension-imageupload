@@ -33,7 +33,7 @@
 		"bolt-assets" : "assets/",
 		"branch-alias" : {
 			"dev-master" : "dev-develop"
-		}
+		},
 		"bolt-screenshots" : [
 			"screenshots/ready_for_upload.png",
 			"screenshots/images_uploaded.png",
