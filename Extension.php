@@ -253,6 +253,7 @@ $('#selected_gallery li a').click(function() {
 <script src='{urlbase}extensions/ImageUpload/js/cors/jquery.xdr-transport.js'></script>
 <![endif]-->
 ";
+        setlocale (LC_ALL, 'en_GB', 'en_GB.UTF-8', 'en_GB.utf8');
         $assets = preg_replace('~\{urlbase\}~', $urlbase, $assets);
         $assets_down = preg_replace('~\{urlbase\}~', $urlbase, $assets_down);
         $assets_down = preg_replace('~\{url\}~', $url, $assets_down);
