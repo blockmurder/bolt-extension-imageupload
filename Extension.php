@@ -119,7 +119,7 @@ class Extension extends \Bolt\BaseExtension{
 
         $assets = "
 
-<link rel='stylesheet' href='http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css'>
+<link rel='stylesheet' href='{urlbase}/assets/css/blueimp-gallery.min.css'>
 
 <link rel='stylesheet' href='{urlbase}/assets/css/jquery.fileupload.css'>
 <link rel='stylesheet' href='{urlbase}/assets/css/jquery.fileupload-ui2.css'>
